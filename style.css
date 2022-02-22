@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #111001;
+    color: #f5ea2b;
+}
+
+body div {
+   
+    margin-top: 10px;
+
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-around;
+}
+
+.search{
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+
+.search .search-bar{
+    width: 100%;
+   
+}
+
+
+.container{
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80vh;
+}
+
+.container .main{
+    height: 60%;
+}
+
+.container .other-days{
+    height: 35%;
+}
