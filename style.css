@@ -5,7 +5,7 @@
 }
 
 body{
-    background-color: #111001;
+    background-color: rgb(59, 59, 49);
     color: #f5ea2b;
 }
 
@@ -30,7 +30,13 @@ body div {
 
 
 .search .search-bar{
-    width: 100%;
+    width: 50%;
+    border: none;
+    background: none;
+    color: white;
+    outline: none;
+    border-bottom: 1px solid #f5ea2b;
+    margin-top: 15px;
    
 }
 
@@ -39,13 +45,54 @@ body div {
     width: 750px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 15px;
     height: 80vh;
+    display: none;
 }
 
 .container .main{
     height: 60%;
+    text-align: center;
+    background: rgb(17, 16, 1,0.3);
+    box-shadow: 5px 5px 10px #1c1b08;
+    padding-top: 10px;
+
 }
 
 .container .other-days{
-    height: 35%;
+    display: flex;
+    height: 39%;
+    justify-content: space-between;
+
+}
+
+.other-days .nextDays{
+    width: 49%;
+    text-align: center;
+    background: rgb(17, 16, 1,0.3);
+    box-shadow: 5px 5px 10px #1c1b08;
+
+}
+
+
+.nextDays .date-next{
+    font-size: 24px;
+    margin-bottom: 0;
+}
+.nextDays .icon-next{
+    margin: 0;
+}
+.nextDays .icon-next img{
+    width: 80px;
+    height:80px;
+    margin: 0;
+}
+
+.nextDays .temp-next{
+margin: 0;
+font-size: 20px;
+}
+
+.nextDays.condition-next{
+margin: 0;
 }
