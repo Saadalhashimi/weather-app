@@ -51,7 +51,48 @@
             </div>
         </div>
     </div>
+    
+    <div class="filter" id="filter">
+        <div class="checkBox">
+            <span>Chance Of Rain :</span>
+            <input type="checkbox" id="mostly" value='mostly'>
+            <label for="mostly">Mostly</label>
+            <input type="checkbox" id="probably" value="probably">
+            <label for="probably">Probably</label>
+        </div>
+        <div class="dropdown">
+            <span>Humidity :</span>
+            <select name="" id="dropdown"> 
+                <option value="all">All</option>
+                <option value="greaterThanNinety">> 90 % </option>
+                <option value="greaterThanSeventy">> 70 % </option>
+                <option value="lessThanFifty"> less 50% </option>
+            </select>
+        </div>
+        <div class="radio">
+            <span> Temperature:</span>
+            <div>
+                <input type="radio"  name="temp" value="greaterThanTen"> >10 &#8451
+               <br> 
+                <input type="radio" name="temp" value="greaterThanZero"> > 0 &#8451
+                <br>
+                <input type="radio" name="temp" value="lessThanZero"> <= 0 &#8451
+            </div>
+        </div>
+    </div>
+    <table class="table wrapper" id="table">
+        <tr class="info">
+            <th>Date</th>
+            <th>Temperature</th>
+            <th>Conditions</th>
+            <th onclick="sortTable('avghumidity')">Humidity</th>
+            <th onclick="sortTable('daily_chance_of_rain')">Chance of rain</th>
+            <th>Will it snow</th>
+        </tr>
+        <tbody id="myTable"></tbody>
 
+    </table>
+    
     <script src="main.js"></script>
 </body>
 </html>
