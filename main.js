@@ -40,6 +40,7 @@ async function getWeather(){
     mainData= data.forecast.forecastday;
     buildTable(mainData)
     createFilter(mainData)
+    //weatherPerHour(mainData)
     city.value= ""
 }
 
@@ -66,6 +67,17 @@ nextConditions[1].innerHTML= para.forecast.forecastday[2].day.condition.text;
 nextTemps[0].innerHTML= para.forecast.forecastday[1].day.avgtemp_c+'\xB0';
 nextTemps[1].innerHTML= para.forecast.forecastday[2].day.avgtemp_c+'\xB0';
 
+
+temp.addEventListener('click',()=>{
+   if(temp.classList.contains('celsius')){
+       temp.classList.remove('celsius');
+       temp.innerHTML= `${para.current.temp_f} &#8457;`;
+}else{
+    temp.classList.add('celsius')
+    temp.innerHTML= `${para.current.temp_c} &#8451;`;
+}
+})
+
 }
 
 
@@ -75,7 +87,7 @@ const buildTable= para => {
            let row = '' 
     for (let i=0;i<para.length;i++){
          row += `<tr> 
-        <td>${para[i].date}</td>
+        <td class= "date">${para[i].date}</td>
         <td>${para[i].day.avgtemp_c} &#8451; </td>
         <td>${para[i].day.condition.text}</td>
         <td>${para[i].day.avghumidity}%</td>
@@ -85,6 +97,7 @@ const buildTable= para => {
         
     }
     table.innerHTML = row
+    
 }
 
 
@@ -160,9 +173,43 @@ const chanceOfRainCheckbox = day=>{
 }
 
 const isTemperatureRadioChecked = day =>{
-    const tempRadios = Array.from(document.querySelectorAll("input[type='radio']:checked"))[0].value
-    return day.avgtemp_c>10 && tempRadios === 'greaterThanTen' || 
-    day.avgtemp_c>0 && tempRadios === 'greaterThanZero' || 
-    day.avgtemp_c<=0 && tempRadios === 'lessThanZero' 
+    const tempRadios = Array.from(document.querySelectorAll("input[type='radio']:checked")).map(
+        checked => checked.value)
+    return day.avgtemp_c>10 && tempRadios[0] === 'greaterThanTen' || 
+    day.avgtemp_c>0 && tempRadios[0] === 'greaterThanZero' || 
+    day.avgtemp_c<=0 && tempRadios[0] === 'lessThanZero'||
+    !tempRadios.length
 }
 
+
+
+const weatherPerHour = (mainData)=>{
+    document.getElementById("sub-table").style.visibility='visble'
+    const arrayOfDays = Array.from(document.querySelectorAll('.date'))
+    arrayOfDays.forEach(day=>{
+        day.addEventListener('click',()=>{
+           const indexOfDay=  arrayOfDays.indexOf(day);
+           const subData = mainData[indexOfDay].hour;
+           console.log('subData', subData)
+           let subTable= document.getElementById('sub-myTable');
+           let row = ''
+           for (let i=0;i<subData.length;i++){
+            row += `<tr> 
+           <td>${subData[i].time.substr(11)}</td>
+           <td>${subData[i].temp_c} &#8451; </td>
+           <td>${subData[i].condition.text}</td>
+           <td>${subData[i].humidity}%</td>
+           <td>${subData[i].feelslike_c}</td>
+           <td>${subData[i].is_day?'Yes':'No'}</td>
+           </tr>`
+           
+       }
+       document.getElementById("sub-table").style.visibility='visible';
+           subTable.innerHTML = row
+
+        })
+    })
+    
+
+
+}

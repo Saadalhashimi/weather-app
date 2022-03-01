@@ -47,7 +47,7 @@ body div {
     margin-right: auto;
     margin-top: 15px;
     height: 80vh;
-    display: none;
+
 }
 
 .container .main{
@@ -135,5 +135,9 @@ table tr td{
 
 .radio{
     display: flex;
+    justify-content: space-around;
 }
 
+.sub-table{
+    visibility: hidden;
+}

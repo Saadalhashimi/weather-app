@@ -29,7 +29,7 @@
         <div class="main" id='main'>
             <div id="city-name"></div>
             <div id="icon"></div>
-            <div id="temp"></div>
+            <div class='celsius' id="temp"></div>
             <div id="description"></div>
             <div id="time"></div>
             <div id="humidity"></div>
@@ -70,17 +70,17 @@
             </select>
         </div>
         <div class="radio">
-            <span> Temperature:</span>
-            <div>
+            <span> Temperature : </span>
+            
                 <input type="radio"  name="temp" value="greaterThanTen"> >10 &#8451
-               <br> 
+               
                 <input type="radio" name="temp" value="greaterThanZero"> > 0 &#8451
-                <br>
-                <input type="radio" name="temp" value="lessThanZero"> <= 0 &#8451
-            </div>
+               
+                <input type="radio" name="temp" value="lessThanZero"> = 0 &#8451
+          
         </div>
     </div>
-    <table class="table wrapper" id="table">
+    <table class="table">
         <tr class="info">
             <th>Date</th>
             <th>Temperature</th>
@@ -90,6 +90,18 @@
             <th>Will it snow</th>
         </tr>
         <tbody id="myTable"></tbody>
+
+    </table>
+    <table class="sub-table" id="sub-table">
+        <tr class="info">
+            <th>Time</th>
+            <th>Temperature</th>
+            <th>Conditions</th>
+            <th>Humidity</th>
+            <th>Feels Like</th>
+            <th>Is Day</th>
+        </tr>
+        <tbody id="sub-myTable"></tbody>
 
     </table>
     
