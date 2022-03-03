@@ -1,27 +1,33 @@
 
-let city = document.querySelector('input');
-let cityName = document.querySelector('#city-name');
-let icon = document.querySelector('#icon');
-let temp = document.querySelector('#temp');
-let desc = document.querySelector('#description');
-let time = document.querySelector('#time');
-let humidity = document.querySelector('#humidity');
-let feeling = document.querySelector('#feeling');
-let nextDays= document.getElementsByClassName('date-next');
-let nextTemps= document.getElementsByClassName('temp-next');
-let nextConditions= document.getElementsByClassName('condition-next');
-let nextIcons= document.getElementsByClassName('icon-next');
-let sortDirection = false;
+const city = document.querySelector('input'),   
+    cityName = document.querySelector('#city-name'),
+    icon = document.querySelector('#icon'),
+    temp = document.querySelector('#temp'),
+    desc = document.querySelector('#description'),
+    time = document.querySelector('#time'),
+    humidity = document.querySelector('#humidity'),
+    feeling = document.querySelector('#feeling'),
+    nextDays= document.getElementsByClassName('date-next'),
+    nextTemps= document.getElementsByClassName('temp-next'),
+    nextConditions= document.getElementsByClassName('condition-next'),
+    nextIcons= document.getElementsByClassName('icon-next')
+    
+ let sortDirection = false
+ let mainData = ''
+
+
 
 
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
+// create new date 
 const d = new Date();
 let day = weekday[d.getDay()];
 
 
 
-city.addEventListener('keydown',(e) =>{
+// add event listener with press Enter 
+city.addEventListener('keydown',(e) =>{ 
     if(e.key === "Enter"){
         getWeather();
         show();
@@ -30,7 +36,7 @@ city.addEventListener('keydown',(e) =>{
 })
 
 
-
+// get data from fetch weather API
 async function getWeather(){
     let url = `http://api.weatherapi.com/v1/forecast.json?key=3e9ae1c84ce94107943101453221502&q=${city.value.toLocaleUpperCase()}&aqi=no&days=4`;
     let res = await fetch(url);
@@ -45,6 +51,7 @@ async function getWeather(){
 }
 
 
+// show the hidden divs
 function show(){
     document.getElementById("container").style.visibility = "visible";
     document.getElementById("filter").style.visibility = "visible";
@@ -52,6 +59,9 @@ function show(){
     
 }
 
+
+
+//present data from API
 function weatherInfo(para){
 cityName.innerHTML= `${para.location.name}, ${para.location.country}`;
 temp.innerHTML= `${para.current.temp_c} &#8451;`;
@@ -70,6 +80,8 @@ nextTemps[0].innerHTML= para.forecast.forecastday[1].day.avgtemp_c+'\xB0';
 nextTemps[1].innerHTML= para.forecast.forecastday[2].day.avgtemp_c+'\xB0';
 
 
+
+// event listener that change celsius to fahrenheit or vice versa
 temp.addEventListener('click',()=>{
    if(temp.classList.contains('celsius')){
        temp.classList.remove('celsius');
@@ -83,7 +95,7 @@ temp.addEventListener('click',()=>{
 }
 
 
-
+// create a table of days with weather info 
 const buildTable= para => {
     let table= document.getElementById('myTable');
            let row = '' 
@@ -109,12 +121,14 @@ const sortTable = colName=>{
     
    sortColumn(sortDirection,colName);
    buildTable(mainData)
+   weatherPerHour(mainData)
+   
 }
 
 
 const sortColumn = (direction,col) =>{
    
-    mainData= mainData.sort((a,b)=>{
+    mainData = mainData.sort((a,b)=>{
        return direction?a.day[col] - b.day[col]:b.day[col] - a.day[col]
         
     })
@@ -151,8 +165,14 @@ const filterTable= daysData =>{
       return (isPassHumidityDropdown(dayData.day) && chanceOfRainCheckbox(dayData.day))&& isTemperatureRadioChecked(dayData.day)
            }
     )
-   buildTable(filtered)
-   weatherPerHour(filtered)
+   if(filtered.length){
+    buildTable(filtered)
+    weatherPerHour(filtered)
+   }else{
+   // buildTable(filtered)
+    alert('there is no day as your filter')
+   }
+   
 }
 
 const isPassHumidityDropdown= day=>{
@@ -187,7 +207,7 @@ const isTemperatureRadioChecked = day =>{
 
 
 const weatherPerHour = (mainData)=>{
-    document.getElementById("sub-table").style.visibility='visble'
+    document.getElementById("sub-table").style.visibility='visible'
     const arrayOfDays = Array.from(document.querySelectorAll('.date'))
     arrayOfDays.forEach(day=>{
         day.addEventListener('click',()=>{

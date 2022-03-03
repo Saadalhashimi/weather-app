@@ -19,6 +19,7 @@ body{
     padding: 20px;
 }
 
+
 .navbar-content{
     display: flex;
     justify-content: space-between;
@@ -27,6 +28,11 @@ body{
     padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.nav a{
+    text-decoration: none;
+    color: #f5ea2b;
 }
 
 /* search bar style  */
@@ -178,12 +184,17 @@ font-size: 20px;
 
 .dropdown{
     text-align: center;
+   
    }
    
 .dropdown select{
-       width: 100px;
+       width: 150px;
+       background-color:rgb(59, 59, 49);
+       color: #ccc;
+       border: 1px solid #f5ea2b;
+       text-decoration: none;
    }
-   
+  
 .radio{
        text-align: center;
        
@@ -191,6 +202,7 @@ font-size: 20px;
 
 .radio span{
     margin-right: 5px;
+    font-size: 15px;
 }
    
 
