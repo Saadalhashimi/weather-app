@@ -9,7 +9,11 @@
     <script src="https://kit.fontawesome.com/8f21e8925f.js" crossorigin="anonymous"></script>
 </head>
 <body>
+   <div class="wrapper">
+   <!-- navbar -->
+
     <div class="navbar">
+        <div class="navbar-content">
         <div>
             <p>Weather App</p>
         </div>
@@ -17,23 +21,29 @@
         <div class="nav">
             <p><i class="fa fa-table x3"></i></p>
         </div>
+        </div>
     </div>
+
+    <!-- search bar  -->
+
     <div class="search">
+
         <input  class='search-bar' type="text" placeholder="Enter a City Name">
-       
-        
-        
-        
     </div>
+
+     <!-- the main container for the rest of page  -->
+
     <div class="container" id="container">
         <div class="main" id='main'>
             <div id="city-name"></div>
-            <div id="icon"></div>
             <div class='celsius' id="temp"></div>
+            <div id="icon"></div>
             <div id="description"></div>
             <div id="time"></div>
+            <div class="others-info">
             <div id="humidity"></div>
             <div id="feeling"></div>
+            </div>
 
         </div>
         <div class="other-days">
@@ -51,7 +61,8 @@
             </div>
         </div>
     </div>
-    
+</div>
+   
     <div class="filter" id="filter">
         <div class="checkBox">
             <span>Chance Of Rain :</span>
@@ -72,21 +83,24 @@
         <div class="radio">
             <span> Temperature : </span>
             
-                <input type="radio"  name="temp" value="greaterThanTen"> >10 &#8451
+                <input type="radio"  name="temp" value="greaterThanTen">
+                <span>>10 &#8451</span> 
                
-                <input type="radio" name="temp" value="greaterThanZero"> > 0 &#8451
+                <input type="radio" name="temp" value="greaterThanZero"> 
+                <span>> 0 &#8451</span>
                
-                <input type="radio" name="temp" value="lessThanZero"> = 0 &#8451
+                <input type="radio" name="temp" value="lessThanZero">
+                <span>= 0 &#8451</span> 
           
         </div>
     </div>
-    <table class="table">
+    <table class="table" id="table">
         <tr class="info">
             <th>Date</th>
-            <th>Temperature</th>
+            <th onclick="sortTable('avgtemp_c')">Temperature <span><i class="fas fa-sort"></i></span></th>
             <th>Conditions</th>
-            <th onclick="sortTable('avghumidity')">Humidity</th>
-            <th onclick="sortTable('daily_chance_of_rain')">Chance of rain</th>
+            <th onclick="sortTable('avghumidity')">Humidity <span><i class="fas fa-sort"></i></th>
+            <th>Chance of rain</th>
             <th>Will it snow</th>
         </tr>
         <tbody id="myTable"></tbody>
@@ -104,6 +118,7 @@
         <tbody id="sub-myTable"></tbody>
 
     </table>
+
     
     <script src="main.js"></script>
 </body>

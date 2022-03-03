@@ -40,13 +40,15 @@ async function getWeather(){
     mainData= data.forecast.forecastday;
     buildTable(mainData)
     createFilter(mainData)
-    //weatherPerHour(mainData)
+    weatherPerHour(mainData)
     city.value= ""
 }
 
 
 function show(){
-    document.getElementById("container").style.display = "block";
+    document.getElementById("container").style.visibility = "visible";
+    document.getElementById("filter").style.visibility = "visible";
+    document.getElementById("table").style.visibility = "visible";
     
 }
 
@@ -150,6 +152,7 @@ const filterTable= daysData =>{
            }
     )
    buildTable(filtered)
+   weatherPerHour(filtered)
 }
 
 const isPassHumidityDropdown= day=>{
