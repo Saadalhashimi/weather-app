@@ -13,9 +13,9 @@ const city = document.querySelector('input'),
     nextIcons= document.getElementsByClassName('icon-next')
     
  let sortDirection = false
- let mainData = ''
+ 
 
-
+let mainData;
 
 
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
