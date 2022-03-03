@@ -207,7 +207,6 @@ const isTemperatureRadioChecked = day =>{
 
 
 const weatherPerHour = (mainData)=>{
-    document.getElementById("sub-table").style.visibility='visible'
     const arrayOfDays = Array.from(document.querySelectorAll('.date'))
     arrayOfDays.forEach(day=>{
         day.addEventListener('click',()=>{
