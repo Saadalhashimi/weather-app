@@ -38,7 +38,7 @@ city.addEventListener('keydown',(e) =>{
 
 // get data from fetch weather API
 async function getWeather(){
-    let url = `http://api.weatherapi.com/v1/forecast.json?key=3e9ae1c84ce94107943101453221502&q=${city.value.toLocaleUpperCase()}&aqi=no&days=4`;
+    let url = `https://api.weatherapi.com/v1/forecast.json?key=3e9ae1c84ce94107943101453221502&q=${city.value.toLocaleUpperCase()}&aqi=no&days=4`;
     let res = await fetch(url);
     let data = await res.json()
     console.log(data);
